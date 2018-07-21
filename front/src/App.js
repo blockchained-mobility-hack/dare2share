@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./App.css";
 
 import {drizzleConnect} from "drizzle-react";
-import {ListOfRides, RIDES} from "./ListOfRides";
+import {ListOfRides, RIDES} from "./customer/ListOfRides";
 import {AppHeader} from "./AppHeader";
 import { Link } from 'react-router-dom'
 

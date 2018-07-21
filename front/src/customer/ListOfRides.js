@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import PropTypes from 'prop-types';
+import {RideItem} from "./RideItem";
 
-class Ride {
+export class Ride {
 
     constructor(id, start, destination) {
         this.id = id;
@@ -16,7 +16,6 @@ export const RIDES = [
     new Ride("yyy", "Stuttgart", "Paris"),
 ];
 
-
 export class ListOfRides extends Component {
 
     render() {
@@ -26,16 +25,3 @@ export class ListOfRides extends Component {
     }
 
 }
-
-export class RideItem extends React.Component {
-
-
-    render() {
-        return (<li>{this.props.ride.start} to {this.props.ride.destination}</li>)
-    }
-}
-
-
-RideItem.propTypes = {
-    ride: PropTypes.instanceOf(Ride)
-};
