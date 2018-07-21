@@ -7,6 +7,12 @@ export class StartPage extends Component {
 
     render() {
         return <div>
+            <div className="InputStart">
+               Munich
+            </div>
+            <div className="InputStart silver">
+                search for rides
+            </div>
             <section>
                 <ListOfRides rides={RIDES}/>
             </section>

@@ -3,9 +3,6 @@ import { Form, Text } from 'informed';
 
 export class StartDestinationInputs extends Component {
 
-
-
-
     render() {
         return <Form id="start-destination" initialValues={{
             start: "Kaufingerstraße",

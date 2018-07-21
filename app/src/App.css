@@ -8,7 +8,8 @@
 }
 
 html {
-    color: var(--font-color)
+    color: var(--font-color);
+    font-family: "Helvetica";
 }
 
 .App {
@@ -66,5 +67,32 @@ a, a:visited, a:hover {
     height: 1.3rem;
 }
 
+.PriceBox {
+    border-right: 3px solid var(--accent-color);
+    border-left: 3px solid var(--accent-color);
+    color: var(--accent-color);
+    padding-top: 0.5rem;
+}
+
+.ListItem {
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    align-items: stretch;
+    justify-items: center;
+}
+
+.InputStart {
+    border-bottom: 1px solid var(--accent-color);
+    text-align: left;
+    height: 2rem;
+    padding: 0.5rem;
+}
 
 
+.font-accent {
+    color: var(--accent-color)
+}
+
+.bg-accent {
+    background-color: var(--accent-color)
+}
