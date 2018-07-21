@@ -3,21 +3,50 @@ import io from 'socket.io-client';
 import CheckMarkIcon from "../icons/CheckmarkIcon";
 import {sendDriverConfirmation} from "../network";
 
+// Import contract
+import RideSharing from "../contracts/RideSharing.json";
+import * as ethers from "ethers";
+import {drizzleConnect} from "drizzle-react";
+
 const socket = io('http://localhost:4200');
 
 const NoPassengers = props => <div>No passengers yet</div>;
 
 const RedX = props => <span className="red">X</span>;
 
-export class PassengerToConfirm extends React.Component {
+export class PassengerToConfirmComp extends React.Component {
 
     constructor(props) {
         super(props);
         this.confirmPassenger = this.confirmPassenger.bind(this)
     }
 
+    initializeContracts() {
+
+        const provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
+        console.log(provider);
+
+        const signer = provider.getSigner();
+
+        const aggregatorContract = new ethers.Contract('0xbbdbf5c315af4ffe5ad1135c445a5d0a05985522', RideSharing.abi, signer);
+
+        const rideInfo = {
+            rideId: 110,
+            start_lat: 48,
+            start_lng: 11,
+            startTimestamp: Date.now(),
+            price: 100,
+            driver: "0x6dc1675ee2122c69c3d5fbce458d9cfae03c52a0",
+            passenger: "0x469f4a3a2628b320b2f60eb627d2cca8b75a4587"
+        };
+
+        console.log('Trigger transaction');
+        aggregatorContract.newRide(rideInfo)
+    }
+
     confirmPassenger() {
         console.log("confirm passenger", this.props.passenger.name);
+        this.initializeContracts();
         sendDriverConfirmation({})
     }
 
@@ -25,6 +54,14 @@ export class PassengerToConfirm extends React.Component {
         return <div>{this.props.passenger.name} <CheckMarkIcon onClick={this.confirmPassenger}/> <RedX/></div>;
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        web3: state.web3
+    };
+};
+
+const PassengerToConfirm = drizzleConnect(PassengerToConfirmComp, mapStateToProps);
 
 export class PassengersWithConfirmation extends React.Component {
 
@@ -50,13 +87,11 @@ export class RideOverview extends Component {
         socket.on('connect', function () {
             console.log("connected")
         });
-        socket.on('check-in', data => {
+        socket.on('join', data => {
             console.log("data:", data);
 
             this.setState({
-                passengers: [
-                    ...this.state.passengers, data
-                ]
+                passengers: [{id: "110", name: "Sascha J."}]
             });
         });
 
@@ -64,7 +99,9 @@ export class RideOverview extends Component {
             console.log("disconnected")
         });
 
+
     }
+
 
     render() {
 
@@ -77,3 +114,4 @@ export class RideOverview extends Component {
         </div>
     }
 }
+

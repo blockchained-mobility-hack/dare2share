@@ -2,7 +2,7 @@
 
 
 
-export const sendPassengerRequest = data => fetch('http://localhost:4200/check-in', {
+export const sendPassengerRequest = data => fetch('http://localhost:4200/join', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -11,7 +11,7 @@ export const sendPassengerRequest = data => fetch('http://localhost:4200/check-i
     body: JSON.stringify(data)
 });
 
-export const sendDriverConfirmation= data => fetch('http://localhost:4200/check-in', {
+export const sendDriverConfirmation= data => fetch('http://localhost:4200/join', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -19,3 +19,4 @@ export const sendDriverConfirmation= data => fetch('http://localhost:4200/check-
     },
     body: JSON.stringify(data)
 });
+

@@ -42,7 +42,7 @@ const mapStateToProps = state => {
     return {
         accounts: state.accounts,
         drizzleStatus: state.drizzleStatus,
-        RideSharing: state.contracts.RideSharing
+        RideSharing: state.contracts.RideSharing,
     };
 };
 
