@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {RIDES} from "./ListOfRides";
 import {AppFooter} from "../scaffold/AppFooter";
-import {Dialog} from "../Dialog";
 
 export class RideDetails extends Component {
 
@@ -29,7 +28,6 @@ export class RideDetails extends Component {
         return <div>
             <h3>{this.state.ride.start} - {this.state.ride.destination}</h3>
             <div>Show Map</div>
-            { (this.state.dialogOpen) ? <Dialog>Alexander confirmed your request</Dialog> : ""}
             <div>
                 <div className="dt w-100 tl">
                     <div className="dt-row">

@@ -5,11 +5,12 @@ import {drizzleConnect} from "drizzle-react";
 import {AppHeader} from "./scaffold/AppHeader";
 import {ProviderJourneyStatus} from "./provider/ProviderJourneyStatus";
 import {WalletRideOverview} from "./wallet/WalletRideOverview";
-import {CreateRide} from "./CreateRide";
+import {CreateRide} from "./provider/CreateRide";
 import {Route, Router, Switch} from "react-router";
 import {StartPage} from "./StartPage";
 import createBrowserHistory from "history/createBrowserHistory";
 import {RideDetails} from "./customer/RideDetails";
+import {RideOverview} from "./provider/RideOverview";
 
 const history = createBrowserHistory();
 
@@ -28,6 +29,7 @@ class App extends Component {
                         <Route path="/journey" component={ProviderJourneyStatus}/>
                         <Route path="/wallet" component={WalletRideOverview}/>
                         <Route path="/ride/:id" component={RideDetails}/>
+                        <Route path="/overview" component={RideOverview}/>
                     </Switch>
                 </Router>
             </div>

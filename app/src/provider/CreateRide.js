@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {StartDestinationInputs} from "./StartDestinationInputs";
-import {Criteria} from "./Criteria";
+import {StartDestinationInputs} from "../StartDestinationInputs";
+import {Criteria} from "../Criteria";
 import { Link } from 'react-router-dom'
-import {AppFooter} from "./scaffold/AppFooter";
+import {AppFooter} from "../scaffold/AppFooter";
 
 const initialCreateFormValues = {
     seatCost: "45 €",
@@ -30,11 +30,8 @@ export class CreateRide extends Component {
             <div className="App">
                 <StartDestinationInputs/>
                 <Criteria initialValues={initialCreateFormValues}/>
-                <section className="Footer">
-                    <Link to="/journey">Create ride</Link>
-                </section>
                 <AppFooter>
-                    <Link to="/journey">Create ride</Link>
+                    <Link to="/overview">Create ride</Link>
                 </AppFooter>
             </div>
         )
