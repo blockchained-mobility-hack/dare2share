@@ -11,6 +11,7 @@ import {Route, Router, Switch} from "react-router";
 // Import contract
 import RideSharing from "./contracts/RideSharing.json";
 import {CreateRide} from "./CreateRide";
+import {ProviderJourneyStatus} from "./provider/ProviderJourneyStatus";
 
 
 console.log(RideSharing);
@@ -36,6 +37,7 @@ ReactDOM.render(
                <Switch>
                 <Route exact path="/" component={App}/>
                    <Route path="/create" component={CreateRide}/>
+                   <Route path="/journey" component={ProviderJourneyStatus}/>
                </Switch>
             </Router>
         </LoadingContainer>

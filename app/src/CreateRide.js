@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {StartDestinationInputs} from "./StartDestinationInputs";
 import {AppHeader} from "./AppHeader";
 import {Criteria} from "./Criteria";
-
+import { Link } from 'react-router-dom'
 
 const initialCreateFormValues = {
     seatCost: "45 €",
@@ -32,7 +32,7 @@ export class CreateRide extends Component {
                 <StartDestinationInputs/>
                 <Criteria initialValues={initialCreateFormValues}/>
                 <section className="Footer">
-                    <button onClick={this.handleCreate}>Create ride</button>
+                    <Link to="/journey">Create ride</Link>
                 </section>
             </div>
         )
