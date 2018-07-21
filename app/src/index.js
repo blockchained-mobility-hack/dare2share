@@ -12,6 +12,7 @@ import {Route, Router, Switch} from "react-router";
 import RideSharing from "./contracts/RideSharing.json";
 import {CreateRide} from "./CreateRide";
 import {ProviderJourneyStatus} from "./provider/ProviderJourneyStatus";
+import {WalletRideOverview} from "./wallet/WalletRideOverview";
 
 
 console.log(RideSharing);
@@ -38,6 +39,7 @@ ReactDOM.render(
                 <Route exact path="/" component={App}/>
                    <Route path="/create" component={CreateRide}/>
                    <Route path="/journey" component={ProviderJourneyStatus}/>
+                   <Route path="/wallet" component={WalletRideOverview}/>
                </Switch>
             </Router>
         </LoadingContainer>

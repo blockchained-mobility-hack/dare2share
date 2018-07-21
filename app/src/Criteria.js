@@ -17,11 +17,15 @@ export class Criteria extends Component {
                         <Text className="TextInput" field="seatCount" id="text-passenger-seats"/>
                     </div>
                     <div>
-                        <label htmlFor="text-tolerance">Available Passenger seats:</label>
-                        <Text className="TextInput" field="tolerance" id="text-tolerance"/>
+                        <label htmlFor="text-detour-tolerance">Detour tolerance</label>
+                        <Text className="TextInput" field="detour-tolerance" id="text-detour-tolerance"/>
                     </div>
                     <div>
-                        <label htmlFor="text-delay-fee">Available Passenger seats:</label>
+                        <label htmlFor="text-delay-tolerance">Max. passenger delay</label>
+                        <Text className="TextInput" field="delay-tolerance" id="text-delay-tolerance"/>
+                    </div>
+                    <div>
+                        <label htmlFor="text-delay-fee">Passenger delay fee</label>
                         <Text className="TextInput" field="delayFee" id="text-delay-fee"/>
                     </div>
                     <div>

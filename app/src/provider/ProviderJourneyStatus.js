@@ -5,7 +5,8 @@ export class ProviderJourneyStatus extends Component {
 
     render() {
         return <div>
-            <h1>Passengers</h1>
+            <h3>Munich &rarr; Berlin</h3>
+            <h3>Passengers</h3>
             <PassengerList passengers={PASSENGERS}/>
         </div>
     }
