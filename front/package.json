@@ -7,6 +7,7 @@
     "drizzle-react": "^1.0.1",
     "drizzle-react-components": "^1.1.0",
     "history": "^4.7.2",
+    "informed": "^1.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

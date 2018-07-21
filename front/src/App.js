@@ -4,6 +4,7 @@ import "./App.css";
 import {drizzleConnect} from "drizzle-react";
 import {ListOfRides, RIDES} from "./ListOfRides";
 import {AppHeader} from "./AppHeader";
+import { Link } from 'react-router-dom'
 
 class App extends Component {
     render() {
@@ -13,11 +14,9 @@ class App extends Component {
             return (
                 <div className="App">
                    <AppHeader/>
+                    <Link to="/create">Create ride</Link>
                     <section>
                        <ListOfRides rides={RIDES}/>
-                    </section>
-                    <section className="Footer">
-                        Create Ride
                     </section>
                 </div>
 

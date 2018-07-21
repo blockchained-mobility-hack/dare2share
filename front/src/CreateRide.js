@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import {StartDestinationInputs} from "./StartDestinationInputs";
+import {AppHeader} from "./AppHeader";
 
 export class CreateRide extends Component {
 
@@ -15,10 +17,14 @@ export class CreateRide extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Create Ride</h1>
-                <button onClick={this.handleCreate}>Create</button>
-            </div>)
+            <div className="App">
+                <AppHeader/>
+                <StartDestinationInputs/>
+                <section className="Footer">
+                    <button onClick={this.handleCreate}>Create ride</button>
+                </section>
+            </div>
+        )
     }
 
 }
