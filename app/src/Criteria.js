@@ -7,7 +7,7 @@ export class Criteria extends Component {
         return (
             <section>
                 <h1>Criteria</h1>
-                <Form id="criteria-form"  initialValues={this.props.initialValues}>
+                <Form id="criteria-form" initialValues={this.props.initialValues}>
                     <div>
                         <label htmlFor="text-seat-cost">Costs for ride per seat:</label>
                         <Text className="TextInput" field="seatCost" id="text-seat-cost"/>

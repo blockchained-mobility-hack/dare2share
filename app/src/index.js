@@ -5,14 +5,9 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import {DrizzleProvider} from "drizzle-react";
 import {LoadingContainer} from "drizzle-react-components";
-import createBrowserHistory from 'history/createBrowserHistory'
-import {Route, Router, Switch} from "react-router";
 
 // Import contract
 import RideSharing from "./contracts/RideSharing.json";
-import {CreateRide} from "./CreateRide";
-import {ProviderJourneyStatus} from "./provider/ProviderJourneyStatus";
-import {WalletRideOverview} from "./wallet/WalletRideOverview";
 
 
 console.log(RideSharing);
@@ -29,19 +24,11 @@ const options = {
     events: {}
 };
 
-const history = createBrowserHistory();
 
 ReactDOM.render(
     <DrizzleProvider options={options}>
         <LoadingContainer>
-            <Router history={history}>
-               <Switch>
-                <Route exact path="/" component={App}/>
-                   <Route path="/create" component={CreateRide}/>
-                   <Route path="/journey" component={ProviderJourneyStatus}/>
-                   <Route path="/wallet" component={WalletRideOverview}/>
-               </Switch>
-            </Router>
+            <App/>
         </LoadingContainer>
     </DrizzleProvider>,
     document.getElementById("root")

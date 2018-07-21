@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-export class Footer extends Component {
+export class AppFooter extends Component {
 
 
     render() {

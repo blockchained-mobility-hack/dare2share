@@ -2,25 +2,35 @@ import React, {Component} from "react";
 import "./App.css";
 
 import {drizzleConnect} from "drizzle-react";
-import {ListOfRides, RIDES} from "./customer/ListOfRides";
-import {AppHeader} from "./AppHeader";
-import { Link } from 'react-router-dom'
+import {AppHeader} from "./scaffold/AppHeader";
+import {ProviderJourneyStatus} from "./provider/ProviderJourneyStatus";
+import {WalletRideOverview} from "./wallet/WalletRideOverview";
+import {CreateRide} from "./CreateRide";
+import {Route, Router, Switch} from "react-router";
+import {StartPage} from "./StartPage";
+import createBrowserHistory from "history/createBrowserHistory";
+
+const history = createBrowserHistory();
 
 class App extends Component {
     render() {
         const {accounts} = this.props;
         console.log(accounts);
 
-            return (
-                <div className="App">
-                   <AppHeader/>
-                    <Link to="/create">Create ride</Link>
-                    <section>
-                       <ListOfRides rides={RIDES}/>
-                    </section>
-                </div>
+        return (
+            <div className="App">
+                <AppHeader/>
+                <Router history={history}>
+                    <Switch>
+                        <Route exact path="/" component={StartPage}/>
+                        <Route path="/create" component={CreateRide}/>
+                        <Route path="/journey" component={ProviderJourneyStatus}/>
+                        <Route path="/wallet" component={WalletRideOverview}/>
+                    </Switch>
+                </Router>
+            </div>
 
-            );
+        );
     }
 }
 
