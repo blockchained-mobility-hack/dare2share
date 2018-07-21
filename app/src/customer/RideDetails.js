@@ -2,6 +2,12 @@ import React, {Component} from "react";
 import {RIDES} from "./ListOfRides";
 import {AppFooter} from "../scaffold/AppFooter";
 
+
+import io from 'socket.io-client';
+import {sendPassengerRequest} from "../network";
+
+const socket = io('http://localhost:4200');
+
 export class RideDetails extends Component {
 
     constructor(props) {
@@ -17,18 +23,24 @@ export class RideDetails extends Component {
         this.setState({
             ride: RIDES.filter(ride => ride.id === id)[0]
         });
+
+        socket.on('check-in', data => {
+           console.log("Display notification")
+        });
     }
 
     requestRide() {
-        // Send websocket event to driver
-        console.log('Notify driver')
+        // Send event to driver
+        console.log('Notify driver');
+        sendPassengerRequest({})
     }
 
     render() {
         return <div>
             <h3>{this.state.ride.start} - {this.state.ride.destination}</h3>
-            <div>Show Map</div>
+            <div className="bg-accent w-100 white h2 pa2 ma2">Show Map</div>
             <div>
+                <h3>Details</h3>
                 <div className="dt w-100 tl">
                     <div className="dt-row">
                         <div className="dtc">Cost for ride per seat</div>
@@ -43,12 +55,12 @@ export class RideDetails extends Component {
                         <div className="dtc">BMW i3</div>
                     </div>
                     <div className="dt-row">
-                        <div className="dtc">15 km</div>
+                        <div className="dtc">Tolerance for passenger delay</div>
                         <div className="dtc">25 min</div>
                     </div>
                     <div className="dt-row">
-                        <div className="dtc">Tolerance for passenger delay</div>
-                        <div className="dtc">25 min€</div>
+                        <div className="dtc">Fee for passenger delay</div>
+                        <div className="dtc">5 €</div>
                     </div>
                 </div>
             </div>

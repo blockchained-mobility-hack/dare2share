@@ -1,9 +1,11 @@
 import React, {Component} from "react";
 import io from 'socket.io-client';
 import CheckMarkIcon from "../icons/CheckmarkIcon";
+import {sendDriverConfirmation, sendPassengerRequest} from "../network";
+
+const socket = io('http://localhost:4200');
 
 const NoPassengers = props => <div>No passengers yet</div>;
-
 
 const RedX = props => <span className="red">X</span>;
 
@@ -16,6 +18,7 @@ export class PassengerToConfirm extends React.Component {
 
     confirmPassenger() {
         console.log("confirm passenger", this.props.passenger.name);
+        sendDriverConfirmation({})
     }
 
     render() {
@@ -44,9 +47,6 @@ export class RideOverview extends Component {
 
     componentDidMount() {
         // Subscribe to websocket
-
-        const socket = io('http://localhost:4200');
-
         socket.on('connect', function () {
             console.log("connected")
         });
