@@ -45,14 +45,24 @@ export class RideOverview extends Component {
     componentDidMount() {
         // Subscribe to websocket
 
-        setTimeout(() => {
+        const socket = io('http://localhost:4200');
+
+        socket.on('connect', function () {
+            console.log("connected")
+        });
+        socket.on('check-in', data => {
+            console.log("data:", data);
+
             this.setState({
                 passengers: [
                     {id: "xcxc", name: "Alexander K."}
                 ]
             });
+        });
 
-        }, 4000);
+        socket.on('disconnect', function () {
+            console.log("disconnected")
+        });
 
     }
 
