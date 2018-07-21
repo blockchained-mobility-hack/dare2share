@@ -5,23 +5,19 @@ import {drizzleConnect} from "drizzle-react";
 
 class App extends Component {
     render() {
-        const {drizzleStatus, accounts} = this.props;
+        const {accounts} = this.props;
         console.log(accounts);
 
-        if (drizzleStatus.initialized) {
             return (
                 <div className="App">
                     <header className="App-header">
                         <h1 className="App-title">Dare2Share</h1>
                     </header>
                     <section>
-                        {this.props.children}
+                        let's share a ride
                     </section>
                 </div>
             );
-        }
-
-        return <div>Loading dapp...(Make sure you have Ganache running)</div>;
     }
 }
 
