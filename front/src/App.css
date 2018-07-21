@@ -9,8 +9,8 @@
 
 .App-header {
   background-color: #BBBBBB;
-  height: 150px;
-  padding: 20px;
+  height: 1.4rem;
+  padding: 1rem;
   color: white;
 }
 
@@ -25,4 +25,12 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Footer {
+    position: absolute;
+    bottom: 0;
+    height: 3.69rem;
+    background-color: #BBBBBB;
+    width: 100%;
 }

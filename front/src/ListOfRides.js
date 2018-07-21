@@ -12,8 +12,8 @@ class Ride {
 }
 
 export const RIDES = [
-    new Ride("0", "Munich", "Berlin"),
-    new Ride("1", "Stuttgart", "Paris"),
+    new Ride("xxx", "Munich", "Berlin"),
+    new Ride("yyy", "Stuttgart", "Paris"),
 ];
 
 
@@ -21,7 +21,7 @@ export class ListOfRides extends Component {
 
     render() {
         return (<ul>
-            {this.props.rides.map(ride => <RideItem ride={ride}/>)}
+            {this.props.rides.map(ride => <RideItem key={ride.id} ride={ride}/>)}
         </ul>)
     }
 
@@ -31,7 +31,7 @@ export class RideItem extends React.Component {
 
 
     render() {
-        return (<li key={this.props.ride.id}>{this.props.ride.start} to {this.props.ride.destination}</li>)
+        return (<li>{this.props.ride.start} to {this.props.ride.destination}</li>)
     }
 }
 
