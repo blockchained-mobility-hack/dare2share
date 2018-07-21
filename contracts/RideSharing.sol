@@ -42,18 +42,7 @@ contract RideSharing {
 
     }
 
-    function cashout(rideInfo[]) external {
+    function cashout(rideInfo[]) {
         // pop contains rideId, timestamp, lat, lng, km, address
     }
-
-    function getBalance(address user) {
-        if(user == msg.sender) {
-
-        }
-
-        else {
-
-        }
-    }
-
 }
