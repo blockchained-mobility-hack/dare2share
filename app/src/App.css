@@ -1,36 +1,47 @@
 
 :root {
     --link-color: white;
-    --accent-color: red;
+    --accent-color: #F67264;
+    --color-positive: #7BF972;
+    --background-main-color: white;
+    --font-color: #3B2D2D;
+}
+
+html {
+    color: var(--font-color)
 }
 
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #BBBBBB;
-  height: 1.4rem;
-  padding: 1rem;
-  color: white;
+    background-color: white;
+    height: 3rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--accent-color);
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .Footer {
@@ -38,7 +49,7 @@
     bottom: 0;
     height: 3.69rem;
     padding: 1rem;
-    background-color: #BBBBBB;
+    background-color: var(--accent-color);
     width: 100%;
 }
 
@@ -46,7 +57,6 @@ a, a:visited, a:hover {
     text-decoration: none;
     color: var(--link-color);
 }
-
 
 .Footer a {
     font-size: 1.5rem;
