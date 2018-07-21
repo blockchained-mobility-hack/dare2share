@@ -1,5 +1,5 @@
-var TutorialToken = artifacts.require("TutorialToken");
+const RideSharing = artifacts.require("RideSharing");
 
 module.exports = function(deployer) {
-  deployer.deploy(TutorialToken);
+  deployer.deploy(RideSharing);
 };

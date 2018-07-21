@@ -6,9 +6,9 @@ import registerServiceWorker from "./registerServiceWorker";
 import { DrizzleProvider } from "drizzle-react";
 
 // Import contract
-import TutorialToken from "./contracts/TutorialToken.json";
+import RideSharing from "./contracts/RideSharing.json";
 
-console.log(TutorialToken);
+console.log(RideSharing);
 
 const options = {
   web3: {
@@ -18,7 +18,7 @@ const options = {
       url: "ws://127.0.0.1:7545"
     }
   },
-  contracts: [TutorialToken],
+  contracts: [RideSharing],
   events: {}
 };
 
