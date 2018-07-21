@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {PropTypes} from "prop-types"
 
 export class PassengerItem extends Component {
 
@@ -11,14 +10,15 @@ export class PassengerItem extends Component {
     }
 
     render() {
-        return <li>
-            <p className="b">{this.props.passenger.name}</p>
-            <p>Connection: {this.props.passenger.status}</p>
-            <p>Distance: {this.props.passenger.km} km</p>
-            <p>Duration: {this.props.passenger.time}</p>
-            <p>Price: {this.props.passenger.price}</p>
-            <hr/>
-        </li>
+        return <div className="ListItem">
+            <div className="b w-100 tl bb b--near-black">{this.props.passenger.name}</div>
+            <div className="PassengerItem">
+                <div>Distance<br/><span className="b f4">{this.props.passenger.km} km</span></div>
+                <div>Duration<br/><span className="b f4">{this.props.passenger.time}</span></div>
+                <div>Price<br/><span className="b f4">{this.props.passenger.price}</span></div>
+                <div>Connection<br/><span className="b f4">{this.props.passenger.status}</span></div>
+            </div>
+        </div>
     }
 }
 

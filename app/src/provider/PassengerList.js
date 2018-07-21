@@ -12,10 +12,10 @@ export const PASSENGERS = [
 export class PassengerList extends Component {
 
     render() {
-        return <ul className="list">
+        return <div className="list">
             {this.props.passengers.map(passenger =>
                 <PassengerItem key={passenger.id} passenger={passenger}/>) }
-        </ul>
+        </div>
     }
 
 }

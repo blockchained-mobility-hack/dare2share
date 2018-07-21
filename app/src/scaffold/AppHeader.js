@@ -17,7 +17,7 @@ const MenuIcon = props => (
 export class AppHeader extends Component {
 
     render() {
-        return <div className="App-header"><MenuIcon className="fl"/> Dare2Share</div>
+        return <div className="App-header font-accent"><a href="/"><MenuIcon className="fl"/></a>Dare2Share</div>
     }
 
 }

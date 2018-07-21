@@ -56,11 +56,12 @@ html {
 
 a, a:visited, a:hover {
     text-decoration: none;
-    color: var(--link-color);
+    color: var(--accent-color);
 }
 
 .Footer a {
     font-size: 1.5rem;
+    color: var(--link-color);
 }
 
 .TextInput {
@@ -78,7 +79,6 @@ a, a:visited, a:hover {
     border-top: 1px solid var(--accent-color);
     border-bottom: 1px solid var(--accent-color);
     align-items: stretch;
-    justify-items: center;
 }
 
 .InputStart {
@@ -86,8 +86,12 @@ a, a:visited, a:hover {
     text-align: left;
     height: 2rem;
     padding: 0.5rem;
+    align-content: space-around;
 }
 
+.PassengerItem {
+    display: flex;
+}
 
 .font-accent {
     color: var(--accent-color)
@@ -96,3 +100,5 @@ a, a:visited, a:hover {
 .bg-accent {
     background-color: var(--accent-color)
 }
+
+
