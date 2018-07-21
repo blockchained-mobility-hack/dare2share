@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import "./App.css";
 
 import {drizzleConnect} from "drizzle-react";
+import {ListOfRides, RIDES} from "./ListOfRides";
 
 class App extends Component {
     render() {
@@ -14,7 +15,7 @@ class App extends Component {
                         <h1 className="App-title">Dare2Share</h1>
                     </header>
                     <section>
-                        let's share a ride
+                       <ListOfRides rides={RIDES}/>
                     </section>
                 </div>
             );
