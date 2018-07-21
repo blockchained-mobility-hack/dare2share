@@ -14,11 +14,14 @@ class App extends Component {
                     <header className="App-header">
                         <h1 className="App-title">Dare2Share</h1>
                     </header>
+                    <section>
+                        {this.props.children}
+                    </section>
                 </div>
             );
         }
 
-        return <div>Loading dapp...(Make sure you have Ganacheng#51Sophia running)</div>;
+        return <div>Loading dapp...(Make sure you have Ganache running)</div>;
     }
 }
 
