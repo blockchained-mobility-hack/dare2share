@@ -6,5 +6,8 @@
   "dependencies": {
     "drizzle-react-components": "^1.0.1",
     "zeppelin-solidity": "^1.7.0"
+  },
+  "devDependencies": {
+    "truffle": "^4.1.13"
   }
 }
