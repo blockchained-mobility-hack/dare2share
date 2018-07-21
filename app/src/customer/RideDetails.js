@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import {RIDES} from "./ListOfRides";
 import {AppFooter} from "../scaffold/AppFooter";
-
+import ReactModal from 'react-modal';
 
 import io from 'socket.io-client';
 import {sendPassengerRequest} from "../network";
 
 const socket = io('http://localhost:4200');
+
+ReactModal.setAppElement(document.getElementById("root"));
 
 export class RideDetails extends Component {
 
@@ -15,6 +17,7 @@ export class RideDetails extends Component {
         this.requestRide = this.requestRide.bind(this);
         this.state = {
             ride: {id: "", start: "", destination: "", price: ""},
+            displayNotification: false
         }
     }
 
@@ -25,18 +28,27 @@ export class RideDetails extends Component {
         });
 
         socket.on('check-in', data => {
-           console.log("Display notification")
+           console.log("Display notification", data);
+
+        //   this.showModal()
         });
+    }
+
+    showModal() {
+        this.setState({
+            displayNotification: true
+        })
     }
 
     requestRide() {
         // Send event to driver
         console.log('Notify driver');
-        sendPassengerRequest({})
+        sendPassengerRequest({id: "xcxc", name: "Alexander K."})
     }
 
     render() {
         return <div>
+            <ReactModal isOpen={this.state.displayNotification} >You are accepted</ReactModal>
             <h3>{this.state.ride.start} - {this.state.ride.destination}</h3>
             <div className="bg-accent w-100 white h2 pa2 ma2">Show Map</div>
             <div>

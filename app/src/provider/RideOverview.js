@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import io from 'socket.io-client';
 import CheckMarkIcon from "../icons/CheckmarkIcon";
-import {sendDriverConfirmation, sendPassengerRequest} from "../network";
+import {sendDriverConfirmation} from "../network";
 
 const socket = io('http://localhost:4200');
 
@@ -55,7 +55,7 @@ export class RideOverview extends Component {
 
             this.setState({
                 passengers: [
-                    {id: "xcxc", name: "Alexander K."}
+                    ...this.state.passengers, data
                 ]
             });
         });
