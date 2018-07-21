@@ -14,7 +14,6 @@ class App extends Component {
                 <div className="App">
                     <header className="App-header">
                         <h1 className="App-title">Dare2Share</h1>
-                        <button>Create Ride</button>
                         <Link to="/create">Create Ride</Link>
                     </header>
                     <section>

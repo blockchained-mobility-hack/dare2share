@@ -13,8 +13,7 @@ class Ride {
 
 export const RIDES = [
     new Ride("0", "Munich", "Berlin"),
-    new Ride("0", "Stuttgart", "Paris"),
-    56
+    new Ride("1", "Stuttgart", "Paris"),
 ];
 
 
