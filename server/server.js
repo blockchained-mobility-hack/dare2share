@@ -28,7 +28,12 @@ io.on('connection', function (client) {
     });
 });
 
+app.post("/join", (req, res) => {
+    io.emit('join', req.body);
 
+    res.status(202);
+    res.end();
+});
 
 app.post("/check-in", (req, res) => {
     io.emit('check-in', req.body);

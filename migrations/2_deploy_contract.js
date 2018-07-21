@@ -1,5 +1,5 @@
-const RideSharing = artifacts.require("RideSharing");
+const MobilityWallet = artifacts.require("MobilityWallet");
 
 module.exports = function(deployer) {
-  deployer.deploy(RideSharing);
+  deployer.deploy(MobilityWallet);
 };
