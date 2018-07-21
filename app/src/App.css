@@ -93,6 +93,15 @@ a, a:visited, a:hover {
     display: flex;
 }
 
+.Dialog {
+    position: absolute;
+    width: 80%;
+    margin: auto;
+    height: 40%;
+    top: 20%;
+    background: white;
+}
+
 .font-accent {
     color: var(--accent-color)
 }

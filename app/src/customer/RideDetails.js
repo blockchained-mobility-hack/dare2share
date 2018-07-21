@@ -1,14 +1,15 @@
 import React, {Component} from "react";
 import {RIDES} from "./ListOfRides";
 import {AppFooter} from "../scaffold/AppFooter";
-import {Link} from "react-router-dom";
+import {Dialog} from "../Dialog";
 
 export class RideDetails extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
+        this.requestRide = this.requestRide.bind(this);
         this.state = {
-            ride: {id: "", start: "", destination: "", price: ""}
+            ride: {id: "", start: "", destination: "", price: ""},
         }
     }
 
@@ -19,10 +20,16 @@ export class RideDetails extends Component {
         });
     }
 
+    requestRide() {
+        // Send websocket event to driver
+        console.log('Notify driver')
+    }
+
     render() {
         return <div>
             <h3>{this.state.ride.start} - {this.state.ride.destination}</h3>
             <div>Show Map</div>
+            { (this.state.dialogOpen) ? <Dialog>Alexander confirmed your request</Dialog> : ""}
             <div>
                 <div className="dt w-100 tl">
                     <div className="dt-row">
@@ -48,7 +55,7 @@ export class RideDetails extends Component {
                 </div>
             </div>
             <AppFooter>
-                <Link to="">Pick me up</Link>
+                <a onClick={this.requestRide}>Pick me up</a>
             </AppFooter>
         </div>
     }
