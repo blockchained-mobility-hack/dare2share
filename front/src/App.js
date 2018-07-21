@@ -18,7 +18,7 @@ class App extends Component {
             );
         }
 
-        return <div>Loading dapp...(Make sure you have Ganache running)</div>;
+        return <div>Loading dapp...(Make sure you have Ganacheng#51Sophia running)</div>;
     }
 }
 
