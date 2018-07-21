@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import PropTypes from 'prop-types';
 
 class Ride {
 
@@ -13,7 +13,8 @@ class Ride {
 
 export const RIDES = [
     new Ride("0", "Munich", "Berlin"),
-    new Ride("0", "Stuttgart", "Paris")
+    new Ride("0", "Stuttgart", "Paris"),
+    56
 ];
 
 
@@ -31,6 +32,11 @@ export class RideItem extends React.Component {
 
 
     render() {
-        return (<li>{this.props.ride.start} to {this.props.ride.destination}</li>)
+        return (<li key={this.props.ride.id}>{this.props.ride.start} to {this.props.ride.destination}</li>)
     }
 }
+
+
+RideItem.propTypes = {
+    ride: PropTypes.instanceOf(Ride)
+};
