@@ -36,3 +36,4 @@ yarn start
 Web app should be available on `http://localhost:3000`.
 
 Login to Metamask using mnemonic from `ganache-cli` output. 
+
