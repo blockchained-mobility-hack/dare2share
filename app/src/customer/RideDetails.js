@@ -26,24 +26,24 @@ export class RideDetails extends Component {
             <div>
                 <div className="dt w-100 tl">
                     <div className="dt-row">
-                        <div className="dtc">Cost for ride per sieat</div>
+                        <div className="dtc">Cost for ride per seat</div>
                         <div className="dtc">45 €</div>
                     </div>
                     <div className="dt-row">
                         <div className="dtc">Available passenger seats</div>
-                        <div className="dtc">45 €</div>
+                        <div className="dtc">4</div>
                     </div>
                     <div className="dt-row">
                         <div className="dtc">Car type</div>
-                        <div className="dtc">45 €</div>
+                        <div className="dtc">BMW i3</div>
                     </div>
                     <div className="dt-row">
-                        <div className="dtc">Detour tolerance</div>
-                        <div className="dtc">45 €</div>
+                        <div className="dtc">15 km</div>
+                        <div className="dtc">25 min</div>
                     </div>
                     <div className="dt-row">
                         <div className="dtc">Tolerance for passenger delay</div>
-                        <div className="dtc">45 €</div>
+                        <div className="dtc">25 min€</div>
                     </div>
                 </div>
             </div>
