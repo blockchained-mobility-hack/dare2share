@@ -6,10 +6,11 @@ import registerServiceWorker from "./registerServiceWorker";
 import {DrizzleProvider} from "drizzle-react";
 import {LoadingContainer} from "drizzle-react-components";
 import createBrowserHistory from 'history/createBrowserHistory'
-import {Route, Router} from "react-router";
+import {Route, Router, Switch} from "react-router";
 
 // Import contract
 import RideSharing from "./contracts/RideSharing.json";
+import {CreateRide} from "./CreateRide";
 
 
 console.log(RideSharing);
@@ -32,7 +33,10 @@ ReactDOM.render(
     <DrizzleProvider options={options}>
         <LoadingContainer>
             <Router history={history}>
-                <Route path="/" component={App}/>
+               <Switch>
+                <Route exact path="/" component={App}/>
+                   <Route path="/create" component={CreateRide}/>
+               </Switch>
             </Router>
         </LoadingContainer>
     </DrizzleProvider>,
