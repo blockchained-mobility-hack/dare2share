@@ -1,8 +1,9 @@
 
 
 
+export const SocketAdress = "http://localhost:4200";
 
-export const sendPassengerRequest = data => fetch('http://localhost:4200/join', {
+export const sendPassengerRequest = data => fetch(SocketAdress + '/join', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -11,7 +12,7 @@ export const sendPassengerRequest = data => fetch('http://localhost:4200/join', 
     body: JSON.stringify(data)
 });
 
-export const sendDriverConfirmation= data => fetch('http://localhost:4200/join', {
+export const sendDriverConfirmation= data => fetch(SocketAdress + '/join', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -20,7 +21,7 @@ export const sendDriverConfirmation= data => fetch('http://localhost:4200/join',
     body: JSON.stringify(data)
 });
 
-export const checkInPassenger = data => fetch('http://localhost:4200/check-in', {
+export const checkInPassenger = data => fetch(SocketAdress + '/check-in', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',

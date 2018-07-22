@@ -9,11 +9,12 @@ import {DriverAddress, PassengerAddress, SmartContractAddress} from "../ethereum
 
 
 import RideSharing from "../contracts/RideSharing.json";
+import {SocketAdress} from "../network";
 
 
 ReactModal.setAppElement(document.getElementById("root"));
 
-const socket = io('http://localhost:4200');
+const socket = io(SocketAdress);
 
 const customStyles = {
     content: {
@@ -98,9 +99,9 @@ export class ProviderJourneyStatus extends Component {
         const provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
         console.log(provider);
         const signer = provider.getSigner();
-        console.log(signer)
+        console.log(signer);
         const contract = new ethers.Contract(SmartContractAddress, RideSharing.abi, signer);
-        console.log(contract)
+        console.log(contract);
 
 
         const checkinMessage = {

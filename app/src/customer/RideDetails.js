@@ -4,14 +4,14 @@ import {AppFooter} from "../scaffold/AppFooter";
 import ReactModal from 'react-modal';
 
 import io from 'socket.io-client';
-import {sendPassengerRequest} from "../network";
+import {sendPassengerRequest, SocketAdress} from "../network";
 // Import contract
 import RideSharing from "../contracts/RideSharing.json";
 import * as ethers from "ethers";
 import {Link} from "react-router-dom";
 import {SmartContractAddress} from "../ethereum";
 
-const socket = io('http://localhost:4200');
+const socket = io(SocketAdress);
 
 const customStyles = {
     content : {

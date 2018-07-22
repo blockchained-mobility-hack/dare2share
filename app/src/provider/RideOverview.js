@@ -7,9 +7,9 @@ import * as ethers from "ethers";
 import {CheckIn} from "../CheckIn";
 import {Link} from "react-router-dom";
 import {DriverAddress, PassengerAddress, SmartContractAddress} from "../ethereum";
-import {sendDriverConfirmation} from "../network";
+import {sendDriverConfirmation, SocketAdress} from "../network";
 
-const socket = io('http://localhost:4200');
+const socket = io(SocketAdress);
 
 const NoPassengers = props => <div>No passengers yet</div>;
 
