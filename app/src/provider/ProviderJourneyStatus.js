@@ -10,6 +10,7 @@ import {DriverAddress, PassengerAddress, SmartContractAddress} from "../ethereum
 
 import RideSharing from "../contracts/RideSharing.json";
 import {SocketAdress} from "../network";
+import Link from "react-router-dom/es/Link";
 
 
 ReactModal.setAppElement(document.getElementById("root"));
@@ -36,23 +37,32 @@ export class ProviderJourneyStatus extends Component {
             passengers: PASSENGERS,
             presence: {},
             showCheckout: true,
-            paymentActive: false
+            paymentActive: false,
+            paymentComplete: false
         };
         this.doCheckout = this.doCheckout.bind(this);
         this.collectPayment = this.collectPayment.bind(this);
-        this.showModal = this.showModal.bind(this);
+        this.showCheckoutModal = this.showCheckoutModal.bind(this);
+        this.showPaymentCompleteModal = this.showPaymentCompleteModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
 
-    showModal() {
+    showCheckoutModal() {
         this.setState({
             showCheckout: true
         })
     }
 
+    showPaymentCompleteModal() {
+        this.setState({
+            paymentComplete: true
+        })
+    }
+
     closeModal() {
         this.setState({
-            showCheckout: false
+            showCheckout: false,
+            paymentComplete: false
         })
     }
 
@@ -69,7 +79,7 @@ export class ProviderJourneyStatus extends Component {
                 presence: data,
             });
 
-            this.showModal()
+            this.showCheckoutModal()
         });
 
         socket.on('check-in', data => {
@@ -108,8 +118,8 @@ export class ProviderJourneyStatus extends Component {
             rideId: 110,
             start_lat: 48,
             start_lng: 11,
-            startTimestamp: Date.now(),
-            km: 366,
+            startTimestamp: 1532253530999,
+            km: 585,
             pricePerKm: 2500000000000000,
             driver: DriverAddress,
             passenger: PassengerAddress,
@@ -117,8 +127,19 @@ export class ProviderJourneyStatus extends Component {
         };
 
         const lastPop = {
+            lat: 49,
+            lng: 12,
+            timestamp: Date.now(),
             rideId: 110,
-            km: 40
+            km: 572
+        };
+
+        contract.oncashoutcomplete = (address, balance) => {
+            console.log('cashout complete');
+          if (address === DriverAddress) {
+              console.log('new balance', balance);
+              this.showPaymentCompleteModal()
+          }
         };
 
         contract.cashout(checkinMessage, lastPop)
@@ -133,7 +154,13 @@ export class ProviderJourneyStatus extends Component {
                 <p>Sascha wasn't connected for more than 5 minutes</p>
                 <div className="border-accent font-accent pa2 w3 center tc" onClick={this.doCheckout}>Finish trip</div>
                 <div className="border-accent pa2 w3 center tc" onClick={this.closeModal}>Pause trip</div>
-
+            </ReactModal>
+            <ReactModal
+                isOpen={this.state.paymentComplete}
+                style={customStyles}
+                onRequestClose={this.closeModal}>
+                <p>Payment completed</p>
+                <Link to="/wallet"><div className="border-accent font-accent pa2 w3 center tc">Go to wallet</div></Link>
             </ReactModal>
             <h3>Munich &rarr; Berlin</h3>
             <h3 className="font-accent">Your passengers</h3>
