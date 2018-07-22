@@ -34,6 +34,3 @@ export class CustomerJourneyStatus extends Component {
 }
 
 const ConnectionReady = props => <div><CheckMarkIcon/> Ride is active</div>
-
-
-
