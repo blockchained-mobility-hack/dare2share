@@ -34,7 +34,7 @@ export class PassengerToConfirm extends React.Component {
             start_lat: 48,
             start_lng: 11,
             startTimestamp: Date.now(),
-            price: 100,
+            pricePerKm: 1000000000000000,
             driver: "0x6dc1675ee2122c69c3d5fbce458d9cfae03c52a0",
             passenger: "0x469f4a3a2628b320b2f60eb627d2cca8b75a4587"
         };
