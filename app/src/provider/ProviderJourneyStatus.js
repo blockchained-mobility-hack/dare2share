@@ -4,6 +4,12 @@ import io from "socket.io-client";
 
 import ReactModal from 'react-modal';
 import {AppFooter} from "../scaffold/AppFooter";
+import * as ethers from "ethers";
+import {SmartContractAddress} from "../ethereum";
+
+
+import RideSharing from "../contracts/RideSharing.json";
+
 
 ReactModal.setAppElement(document.getElementById("root"));
 
@@ -86,6 +92,13 @@ export class ProviderJourneyStatus extends Component {
 
     collectPayment() {
         console.log('collect payment');
+
+        const provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
+        console.log(provider);
+        const signer = provider.getSigner();
+        console.log(signer)
+        const contract = new ethers.Contract(SmartContractAddress, RideSharing.abi, signer);
+        console.log(contract)
     }
 
     render() {
@@ -110,3 +123,4 @@ export class ProviderJourneyStatus extends Component {
 
 
 }
+

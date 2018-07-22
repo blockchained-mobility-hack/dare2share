@@ -5,7 +5,6 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import {DrizzleProvider} from "drizzle-react";
 import {LoadingContainer} from "drizzle-react-components";
-
 // Import contract
 import RideSharing from "./contracts/RideSharing.json";
 
@@ -20,7 +19,7 @@ const options = {
             url: "ws://127.0.0.1:7545"
         }
     },
-    contracts: [RideSharing],
+    contracts: [],
     events: {}
 };
 

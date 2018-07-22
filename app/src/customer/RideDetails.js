@@ -5,11 +5,11 @@ import ReactModal from 'react-modal';
 
 import io from 'socket.io-client';
 import {sendPassengerRequest} from "../network";
-
 // Import contract
 import RideSharing from "../contracts/RideSharing.json";
 import * as ethers from "ethers";
 import {Link} from "react-router-dom";
+import {SmartContractAddress} from "../ethereum";
 
 const socket = io('http://localhost:4200');
 
@@ -84,10 +84,8 @@ ReactModal.setAppElement(document.getElementById("root"));
 
         const provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
         console.log(provider);
-
         const signer = provider.getSigner();
-
-        const aggregatorContract = new ethers.Contract('0xcae98f6132a6999775e37fadeed65459ef441c52', RideSharing.abi, signer);
+        const aggregatorContract = new ethers.Contract(SmartContractAddress, RideSharing.abi, signer);
 
         aggregatorContract.onrideaccepted = (rideId, passenger) => {
             console.log("rideId: " + rideId + "    " + "passenger: " + passenger);
