@@ -9,7 +9,6 @@ import {sendPassengerRequest} from "../network";
 // Import contract
 import RideSharing from "../contracts/RideSharing.json";
 import * as ethers from "ethers";
-import {drizzleConnect} from "drizzle-react";
 
 const socket = io('http://localhost:4200');
 
@@ -27,7 +26,7 @@ const customStyles = {
 
 ReactModal.setAppElement(document.getElementById("root"));
 
- class RideDetailsComp extends Component {
+ export class RideDetails extends Component {
 
     constructor(props) {
         super(props);
@@ -88,7 +87,6 @@ ReactModal.setAppElement(document.getElementById("root"));
                 if(passenger === address) {
                     console.log('passenger received ethereum event');
                       this.showModal();
-                        console.log(this)
                 }
             });
         }
@@ -133,11 +131,3 @@ ReactModal.setAppElement(document.getElementById("root"));
         </div>
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        web3: state.web3
-    };
-};
-
-export const RideDetails = drizzleConnect(RideDetailsComp, mapStateToProps);

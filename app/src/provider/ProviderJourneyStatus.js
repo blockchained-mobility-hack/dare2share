@@ -11,7 +11,7 @@ export class ProviderJourneyStatus extends Component {
             <h3>Passengers</h3>
             <PassengerList passengers={PASSENGERS}/>
             <AppFooter>
-                <Link to="/wallet">Checkout</Link>
+                <Link to="/wallet">Collect payment</Link>
             </AppFooter>
         </div>
     }

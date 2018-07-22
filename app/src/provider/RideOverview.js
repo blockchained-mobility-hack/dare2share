@@ -6,7 +6,6 @@ import {sendDriverConfirmation} from "../network";
 // Import contract
 import RideSharing from "../contracts/RideSharing.json";
 import * as ethers from "ethers";
-import {drizzleConnect} from "drizzle-react";
 
 const socket = io('http://localhost:4200');
 
@@ -14,7 +13,7 @@ const NoPassengers = props => <div>No passengers yet</div>;
 
 const RedX = props => <span className="red">X</span>;
 
-export class PassengerToConfirmComp extends React.Component {
+export class PassengerToConfirm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -61,7 +60,7 @@ const mapStateToProps = state => {
     };
 };
 
-const PassengerToConfirm = drizzleConnect(PassengerToConfirmComp, mapStateToProps);
+
 
 export class PassengersWithConfirmation extends React.Component {
 
