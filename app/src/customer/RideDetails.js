@@ -36,7 +36,7 @@ ReactModal.setAppElement(document.getElementById("root"));
         this.closeModal = this.closeModal.bind(this);
         this.state = {
             ride: {id: "", start: "", destination: "", price: ""},
-            displayNotification: true
+            displayNotification: false
         }
     }
 

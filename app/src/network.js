@@ -1,7 +1,8 @@
 
 
 
-export const SocketAdress = "http://localhost:4200";
+// export const SocketAdress = "http://localhost:4200";
+export const SocketAdress = "http://172.27.64.176:4200";
 
 export const sendPassengerRequest = data => fetch(SocketAdress + '/join', {
     method: 'POST',

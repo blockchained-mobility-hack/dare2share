@@ -36,7 +36,7 @@ export class ProviderJourneyStatus extends Component {
         this.state = {
             passengers: PASSENGERS,
             presence: {},
-            showCheckout: true,
+            showCheckout: false,
             paymentActive: false,
             paymentComplete: false
         };
