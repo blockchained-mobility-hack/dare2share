@@ -13,6 +13,18 @@ import {drizzleConnect} from "drizzle-react";
 
 const socket = io('http://localhost:4200');
 
+const customStyles = {
+    content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+        height: '40%'
+    }
+};
+
 ReactModal.setAppElement(document.getElementById("root"));
 
  class RideDetailsComp extends Component {
@@ -68,7 +80,7 @@ ReactModal.setAppElement(document.getElementById("root"));
 
         const signer = provider.getSigner();
 
-        const aggregatorContract = new ethers.Contract('0xbbdbf5c315af4ffe5ad1135c445a5d0a05985522', RideSharing.abi, signer);
+        const aggregatorContract = new ethers.Contract('0xcae98f6132a6999775e37fadeed65459ef441c52', RideSharing.abi, signer);
 
         aggregatorContract.onrideaccepted = (rideId, passenger) => {
             console.log("rideId: " + rideId + "    " + "passenger: " + passenger);
@@ -84,7 +96,10 @@ ReactModal.setAppElement(document.getElementById("root"));
 
     render() {
         return <div>
-            <ReactModal isOpen={this.state.displayNotification} >You are accepted</ReactModal>
+            <ReactModal
+                isOpen={this.state.displayNotification}
+                style={customStyles}
+            >You are accepted</ReactModal>
             <h3>{this.state.ride.start} - {this.state.ride.destination}</h3>
             <div className="bg-accent w-100 white h2 pa2 ma2">Show Map</div>
             <div>
