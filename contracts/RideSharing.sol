@@ -16,7 +16,7 @@ contract RideSharing {
         int32 start_lat; 
         int32 start_lng; 
         uint32 startTimestamp; 
-        uint16 price; 
+        uint16 pricePerKm;
         address driver;
         address passenger;
     }
