@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {CheckIn} from "../CheckIn";
+import {checkInPassenger} from "../network";
 
 export class CustomerJourneyStatus extends Component {
 
@@ -11,6 +12,7 @@ export class CustomerJourneyStatus extends Component {
 
     doCheckIn() {
         console.log('Checking In customer')
+        checkInPassenger({})
     }
 
     render() {
