@@ -174,7 +174,7 @@ contract RideSharing {
     }
 
     event CashoutComplete(address recepient, uint newBalance);
-    function cashout(checkinMessage passengerCheckinMessage, pop finalPop) {
+    function rideCashout(checkinMessage passengerCheckinMessage, pop finalPop) {
         require(passengerCheckinMessage.rideId == finalPop.rideId);
         // TODO Verify signature
         // require...
