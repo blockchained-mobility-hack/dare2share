@@ -212,4 +212,8 @@ contract RideSharing {
 
         emit CashoutComplete(passengerCheckinMessage.driver, balances[passengerCheckinMessage.driver]);
     }
+
+    function combinedCashout(finishedRide[]) {
+        // TODO ...
+    }
 }
