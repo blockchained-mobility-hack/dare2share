@@ -101,6 +101,10 @@ a, a:visited, a:hover {
     background-color: var(--accent-color)
 }
 
+.border-accent {
+    border: 1px solid var(--accent-color);
+}
+
 hr {
     display: block;
     height: 1px;

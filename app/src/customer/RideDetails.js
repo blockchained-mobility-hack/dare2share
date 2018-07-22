@@ -20,7 +20,7 @@ const customStyles = {
         bottom                : 'auto',
         marginRight           : '-50%',
         transform             : 'translate(-50%, -50%)',
-        height: '40%'
+        height: '20%'
     }
 };
 
@@ -32,9 +32,10 @@ ReactModal.setAppElement(document.getElementById("root"));
         super(props);
         this.requestRide = this.requestRide.bind(this);
         this.showModal = this.showModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
         this.state = {
             ride: {id: "", start: "", destination: "", price: ""},
-            displayNotification: false
+            displayNotification: true
         }
     }
 
@@ -52,6 +53,12 @@ ReactModal.setAppElement(document.getElementById("root"));
             displayNotification: true
         })
     }
+
+     closeModal() {
+         this.setState({
+             displayNotification: false
+         })
+     }
 
     requestRide() {
         // Send event to driver
@@ -92,12 +99,17 @@ ReactModal.setAppElement(document.getElementById("root"));
         }
     }
 
+
+
     render() {
         return <div>
             <ReactModal
                 isOpen={this.state.displayNotification}
                 style={customStyles}
-            >You are accepted</ReactModal>
+                onRequestClose={this.closeModal}>
+                <p>Jessi accepted your request.</p>
+                <div className="border-accent font-accent pa2 w3 center tc" onClick={this.closeModal}>OK</div>
+            </ReactModal>
             <h3>{this.state.ride.start} - {this.state.ride.destination}</h3>
             <div className="bg-accent w-100 white h2 pa2 ma2">Show Map</div>
             <div>
