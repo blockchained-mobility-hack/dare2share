@@ -2,7 +2,24 @@ import React, {Component} from "react";
 import {PassengerList, PASSENGERS} from "./PassengerList";
 import io from "socket.io-client";
 
+import ReactModal from 'react-modal';
+import {AppFooter} from "../scaffold/AppFooter";
+
+ReactModal.setAppElement(document.getElementById("root"));
+
 const socket = io('http://localhost:4200');
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        height: '40%'
+    }
+};
 
 export class ProviderJourneyStatus extends Component {
 
@@ -10,8 +27,24 @@ export class ProviderJourneyStatus extends Component {
         super(props);
         this.state = {
             passengers: PASSENGERS,
-            presence: {}
-        }
+            presence: {},
+            showCheckout: true,
+            paymentActive: false
+        };
+        this.doCheckout = this.doCheckout.bind(this);
+        this.collectPayment = this.collectPayment.bind(this);
+    }
+
+    showModal() {
+        this.setState({
+            showCheckout: true
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            showCheckout: false
+        })
     }
 
     componentDidMount() {
@@ -24,9 +57,12 @@ export class ProviderJourneyStatus extends Component {
             console.log("data:", data);
 
             this.setState({
-                presence: data
+                presence: data,
             });
+
+            this.showModal()
         });
+
         socket.on('check-in', data => {
             const passenger = PASSENGERS[0];
             passenger.status = "active";
@@ -40,12 +76,37 @@ export class ProviderJourneyStatus extends Component {
         });
     }
 
+    doCheckout() {
+        console.log('do checkout');
+        this.setState({
+            paymentActive: true
+        });
+        this.closeModal();
+    }
+
+    collectPayment() {
+        console.log('collect payment');
+    }
+
     render() {
         return <div>
+            <ReactModal
+                isOpen={this.state.showCheckout}
+                style={customStyles}
+                onRequestClose={this.closeModal}>
+                <p>Sascha wasn't connected for more than 5 minutes</p>
+                <div className="border-accent font-accent pa2 w3 center tc" onClick={this.doCheckout}>Finish trip</div>
+                <div className="border-accent pa2 w3 center tc" onClick={this.closeModal}>Pause trip</div>
+
+            </ReactModal>
             <h3>Munich &rarr; Berlin</h3>
             <h3 className="font-accent">Your passengers</h3>
             <PassengerList passengers={this.state.passengers}/>
+            <AppFooter className={this.state.paymentActive ? "db" : "dn"}>
+                <a onClick={this.collectPayment}>Collect payment</a>
+            </AppFooter>
         </div>
     }
+
 
 }

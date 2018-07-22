@@ -25,7 +25,3 @@ export class CustomerJourneyStatus extends Component {
 
 }
 
-
-
-
-
