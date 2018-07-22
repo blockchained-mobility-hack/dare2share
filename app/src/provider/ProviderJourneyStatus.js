@@ -136,10 +136,10 @@ export class ProviderJourneyStatus extends Component {
 
         contract.oncashoutcomplete = (address, balance) => {
             console.log('cashout complete', 'address', address, 'balance', balance);
-          if (address.toLowerCase() === DriverAddress.toLowerCase()) {
-              console.log('new balance', balance);
-              this.showPaymentCompleteModal()
-          }
+            if (address.toLowerCase() === DriverAddress.toLowerCase()) {
+                console.log('new balance', balance);
+                this.showPaymentCompleteModal()
+            }
         };
 
         contract.rideCashout(checkinMessage, lastPop)
@@ -160,14 +160,18 @@ export class ProviderJourneyStatus extends Component {
                 style={customStyles}
                 onRequestClose={this.closeModal}>
                 <p>Payment completed</p>
-                <Link to="/wallet"><div className="border-accent font-accent pa2 w3 center tc">Go to wallet</div></Link>
+                <Link to="/wallet">
+                    <div className="border-accent font-accent pa2 w3 center tc">Go to wallet</div>
+                </Link>
             </ReactModal>
             <h3>Munich &rarr; Berlin</h3>
             <h3 className="font-accent">Your passengers</h3>
             <PassengerList passengers={this.state.passengers}/>
-            <AppFooter className={this.state.paymentActive ? "db" : "dn"}>
+
+            {this.state.paymentActive ? <AppFooter>
                 <a onClick={this.collectPayment}>Collect payment</a>
-            </AppFooter>
+            </AppFooter> : ""}
+
         </div>
     }
 }

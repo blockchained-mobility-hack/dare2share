@@ -3,8 +3,7 @@ import {PassengerItem} from "./PassengerItem";
 
 
 export const PASSENGERS = [
-    {id: "a23", name: "Kai K.", status: "waiting", km: "234", time: "02:35:45", price: "25,67 €"},
-    // {id: "b45", name: "Sascha J.", status: "active", km: "12", time: "00:08:23", price: "1,38 €"},
+    {id: "a23", name: "Kai K.", status: "waiting", km: "547", time: "05:35:45", price: "22,40 €"},
 ];
 
 export class PassengerList extends Component {
