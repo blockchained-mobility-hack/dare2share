@@ -103,7 +103,7 @@ export class RideOverview extends Component {
             console.log("data:", data);
 
             this.setState({
-                passengers: [{id: "110", name: "Sascha J."}]
+                passengers: [{id: "110", name: "Kai K."}]
             });
         });
 

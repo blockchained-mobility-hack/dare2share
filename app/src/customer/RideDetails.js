@@ -45,8 +45,6 @@ ReactModal.setAppElement(document.getElementById("root"));
         this.setState({
             ride: RIDES.filter(ride => ride.id === id)[0]
         });
-
-
     }
 
     showModal() {
@@ -115,7 +113,7 @@ ReactModal.setAppElement(document.getElementById("root"));
                 <div className="dt w-100 tl">
                     <div className="dt-row">
                         <div className="dtc">Cost for ride per seat</div>
-                        <div className="dtc">45 €</div>
+                        <div className="dtc">25 €</div>
                     </div>
                     <div className="dt-row">
                         <div className="dtc">Available passenger seats</div>

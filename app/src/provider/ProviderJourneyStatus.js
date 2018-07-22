@@ -151,7 +151,7 @@ export class ProviderJourneyStatus extends Component {
                 isOpen={this.state.showCheckout}
                 style={customStyles}
                 onRequestClose={this.closeModal}>
-                <p>Sascha wasn't connected for more than 5 minutes</p>
+                <p>Kai wasn't connected for more than 5 minutes</p>
                 <div className="border-accent font-accent pa2 w3 center tc" onClick={this.doCheckout}>Finish trip</div>
                 <div className="border-accent pa2 w3 center tc" onClick={this.closeModal}>Pause trip</div>
             </ReactModal>
@@ -170,7 +170,5 @@ export class ProviderJourneyStatus extends Component {
             </AppFooter>
         </div>
     }
-
-
 }
 

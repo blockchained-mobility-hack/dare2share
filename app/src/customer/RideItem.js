@@ -1,6 +1,7 @@
 import React from "react";
 import SmilieIcon from "../icons/SmilieIcon";
 import {Redirect} from "react-router";
+import CheckMarkIcon from "../icons/CheckmarkIcon";
 
 export class RideItem extends React.Component {
 
@@ -23,7 +24,7 @@ export class RideItem extends React.Component {
     render() {
         return this.state.showDetails ? <Redirect push to={"/ride/" + this.props.ride.id}/> :
             <div className="list flex flex-row w-100 ListItem" onClick={this.handleRideClick}>
-                <div className="w-20 bg-accent ma2"><SmilieIcon/></div>
+                <div className="w-20 bg-accent ma2">{this.props.ride.id === "a"? <Trusted/> : <Untrusted/> }</div>
                 <div className="w-20" style={{paddingTop: "0.5rem"}}>
                     {this.props.ride.start}
                 </div>
@@ -32,9 +33,11 @@ export class RideItem extends React.Component {
                     {this.props.ride.destination}
                 </div>
                 <div className="w-20 PriceBox">
-                    {this.props.ride.price.toFixed(2)} €
+                    {this.props.ride.price.toFixed(0)} €
                 </div>
             </div>
     }
 }
 
+const Trusted = props => <div><SmilieIcon/> <CheckMarkIcon/></div>
+const Untrusted = props =>  <SmilieIcon/>

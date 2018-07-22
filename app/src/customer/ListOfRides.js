@@ -13,11 +13,11 @@ export class Ride {
 }
 
 export const RIDES = [
-    new Ride("a", "Munich", "Berlin", Math.random()),
-    new Ride("b", "Stuttgart", "Paris", Math.random()),
+    new Ride("a", "Munich", "Berlin", 25/100),
+    new Ride("b", "Cologne", "Paris", Math.random()),
     new Ride("c", "Stuttgart", "Paris", Math.random()),
     new Ride("d", "Munich", "Paris", Math.random()),
-    new Ride("e", "Stuttgart", "Paris", Math.random()),
+    new Ride("e", "Cologne", "Berlin", Math.random()),
     new Ride("f", "Stuttgart", "Paris", Math.random()),
     new Ride("g", "Stuttgart", "Paris", Math.random()),
     new Ride("h", "Stuttgart", "Paris", Math.random()),
