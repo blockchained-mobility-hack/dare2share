@@ -12,7 +12,7 @@ export class PassengerItem extends Component {
                 <div className="w-25">Duration<br/><span className="b f4">{this.props.passenger.time}</span></div>
                 <div className="w-25">Price<br/><span className="b f4">{this.props.passenger.price}</span></div>
                 <div className="w-25">Connection<br/><span className="b f4">
-                    {this.props.passenger.status ? <CheckMarkIcon/> : "Error"}</span></div>
+                    {this.props.passenger.status === "active" ? <CheckMarkIcon/> : "Waiting"}</span></div>
             </div>
         </div>
     }

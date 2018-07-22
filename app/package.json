@@ -6,6 +6,7 @@
     "drizzle": "^1.0.1",
     "drizzle-react": "^1.0.1",
     "drizzle-react-components": "^1.1.0",
+    "ethers": "^3.0.25",
     "history": "^4.7.2",
     "informed": "^1.7.2",
     "prop-types": "^15.6.2",

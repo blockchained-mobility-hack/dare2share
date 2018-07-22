@@ -42,6 +42,13 @@ app.post("/check-in", (req, res) => {
     res.end();
 });
 
+app.post("/presence", (req, res) => {
+    io.emit('presence', req.body);
+
+    res.status(202);
+    res.end();
+});
+
 server.listen({port: port}, () => {
     console.log(`Server started on ${port}`)
 });

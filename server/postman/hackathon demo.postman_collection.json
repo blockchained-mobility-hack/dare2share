@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "5e00a15e-aefa-4ee7-9b3f-edf14facc8b1",
+		"name": "hackathon demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check-out passenger",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"rideInfo\": {\n\t    \"rideId\": 110,\n        \"start_lat\": 48,\n        \"start_lng\": 11,\n        \"startTimestamp\": 1532243986,\n        \"price\": 100,\n        \"driver\": \"0x6dc1675ee2122c69c3d5fbce458d9cfae03c52a0\",\n        \"passenger\": \"0x469f4a3a2628b320b2f60eb627d2cca8b75a4587\"\n\t},\n\t\"pop\": {\n\t\t\"rideId\": 110,\n\t\t\"km\": 1000000000000000\n\t},\n\t\"signature\": {\n\t\t\"r\": \"0xe0ed34fbbe927a58267ce2e8067a611c69869e20e731bc99187a8bc97058664c\",\n\t\t\"s\": \"0x16de07f7660f06ce0985d1d8e063726783033fda59b307897f26a21392d62b3a\",\n\t\t\"v\": 28\n\t}\n}"
+				},
+				"url": {
+					"raw": "localhost:4200/presence",
+					"host": [
+						"localhost"
+					],
+					"port": "4200",
+					"path": [
+						"presence"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check-in passenger",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4200/check-in",
+					"host": [
+						"localhost"
+					],
+					"port": "4200",
+					"path": [
+						"check-in"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
