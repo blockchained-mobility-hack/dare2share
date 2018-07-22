@@ -1,27 +1,43 @@
 import React, {Component} from "react";
 import {PassengerList, PASSENGERS} from "./PassengerList";
+import io from "socket.io-client";
+
+const socket = io('http://localhost:4200');
 
 export class ProviderJourneyStatus extends Component {
-
 
     constructor(props) {
         super(props);
         this.state = {
-            passengers: PASSENGERS
+            passengers: PASSENGERS,
+            presence: {}
         }
     }
 
     componentDidMount() {
         // Register on websocket
+        // Subscribe to websocket
+        socket.on('connect', function () {
+            console.log("connected")
+        });
+        socket.on('presence', data => {
+            console.log("data:", data);
 
-        setTimeout(() => {
-
+            this.setState({
+                presence: data
+            });
+        });
+        socket.on('check-in', data => {
             const passenger = PASSENGERS[0];
             passenger.status = "active";
             this.setState({
                 passengers: [passenger]
-            })
-        }, 2000);
+            });
+        });
+
+        socket.on('disconnect', function () {
+            console.log("disconnected")
+        });
     }
 
     render() {
