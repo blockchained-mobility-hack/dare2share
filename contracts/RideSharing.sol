@@ -114,7 +114,10 @@ contract RideSharing {
     }
 
     struct pop {
-        uint16 rideId; 
+        int32 lat;
+        int32 lng; 
+        uint32 timestamp; 
+        uint16 rideId;
         uint16 km;
     }
 
@@ -170,6 +173,7 @@ contract RideSharing {
         }
     }
 
+    event CashoutComplete(address recepient, uint newBalance);
     function cashout(checkinMessage passengerCheckinMessage, pop finalPop) {
         require(passengerCheckinMessage.rideId == finalPop.rideId);
         // TODO Verify signature
@@ -205,5 +209,7 @@ contract RideSharing {
 
         balances[passengerCheckinMessage.passenger] -= price;
         balances[passengerCheckinMessage.driver] += price;
+
+        emit CashoutComplete(passengerCheckinMessage.driver, balances[passengerCheckinMessage.driver]);
     }
 }
