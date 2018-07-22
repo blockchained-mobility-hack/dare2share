@@ -134,7 +134,7 @@ ReactModal.setAppElement(document.getElementById("root"));
                 </div>
             </div>
             <AppFooter>
-                <a onClick={this.requestRide}>Pick me up</a>
+                <a onClick={this.requestRide}>Request ride</a>
             </AppFooter>
         </div>
     }

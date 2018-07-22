@@ -6,35 +6,45 @@ export class Criteria extends Component {
     render() {
         return (
             <section>
-                <h1>Criteria</h1>
-                <Form id="criteria-form" initialValues={this.props.initialValues}>
-                    <div>
-                        <label htmlFor="text-seat-cost">Costs for ride per seat:</label>
-                        <Text className="TextInput" field="seatCost" id="text-seat-cost"/>
+                <p className="font-accent b">Ride configuration</p>
+                <div className="dt w-100 pa2">
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Costs for ride per seat</div>
+                        <div className="dtc">25 €</div>
                     </div>
-                    <div>
-                        <label htmlFor="text-passenger-seats">Available Passenger seats:</label>
-                        <Text className="TextInput" field="seatCount" id="text-passenger-seats"/>
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Available seats</div>
+                        <div className="dtc">4</div>
                     </div>
-                    <div>
-                        <label htmlFor="text-detour-tolerance">Detour tolerance</label>
-                        <Text className="TextInput" field="detour-tolerance" id="text-detour-tolerance"/>
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Detour tolerance</div>
+                        <div className="dtc">15 km</div>
                     </div>
-                    <div>
-                        <label htmlFor="text-delay-tolerance">Max. passenger delay</label>
-                        <Text className="TextInput" field="delay-tolerance" id="text-delay-tolerance"/>
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Tolerance for coming late</div>
+                        <div className="dtc">15 min</div>
                     </div>
-                    <div>
-                        <label htmlFor="text-delay-fee">Passenger delay fee</label>
-                        <Text className="TextInput" field="delayFee" id="text-delay-fee"/>
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Latest possible arrival</div>
+                        <div className="dtc">45 min</div>
                     </div>
-                    <div>
-                        <label htmlFor="text-no-show">Available Passenger seats:</label>
-                        <Text className="TextInput" field="noShowFee" id="text-no-show"/>
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Passenger delay fee</div>
+                        <div className="dtc">0 €</div>
                     </div>
-
-                </Form>
-
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Passenger no show fee</div>
+                        <div className="dtc">25 €</div>
+                    </div>
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Driver delay fee</div>
+                        <div className="dtc">0 €</div>
+                    </div>
+                    <div className="dt-row">
+                        <div className="dtc w-80 tl">Driver no show fee</div>
+                        <div className="dtc">5 €</div>
+                    </div>
+                </div>
             </section>
         )
     }

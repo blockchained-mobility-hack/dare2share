@@ -1,16 +1,17 @@
 import React, {Component} from "react";
 import {StartDestinationInputs} from "../StartDestinationInputs";
 import {Criteria} from "../Criteria";
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {AppFooter} from "../scaffold/AppFooter";
 
 const initialCreateFormValues = {
-    seatCost: "45 €",
+    seatCost: "25 €",
     seatCount: "4",
-    tolerance: "25 min",
+    delayTolerance: "25 min",
     delayFee: "10 €",
+    detourTolerance: "15 km",
     noShowFee: "20 €"
-}
+};
 
 export class CreateRide extends Component {
 
