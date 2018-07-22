@@ -6,8 +6,10 @@ import RideSharing from "../contracts/RideSharing.json";
 import * as ethers from "ethers";
 import {CheckIn} from "../CheckIn";
 import {Link} from "react-router-dom";
+import {DriverAddress, PassengerAddress, SmartContractAddress} from "../ethereum";
+import {sendDriverConfirmation, SocketAdress} from "../network";
 
-const socket = io('http://localhost:4200');
+const socket = io(SocketAdress);
 
 const NoPassengers = props => <div>No passengers yet</div>;
 
@@ -27,19 +29,28 @@ export class PassengerToConfirm extends React.Component {
 
         const provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
         console.log(provider);
-
         const signer = provider.getSigner();
-
-        const aggregatorContract = new ethers.Contract('0xcae98f6132a6999775e37fadeed65459ef441c52', RideSharing.abi, signer);
+        const aggregatorContract = new ethers.Contract(SmartContractAddress, RideSharing.abi, signer);
 
         const rideInfo = {
             rideId: 110,
             start_lat: 48,
             start_lng: 11,
             startTimestamp: Date.now(),
-            pricePerKm: 1000000000000000,
-            driver: "0x6dc1675ee2122c69c3d5fbce458d9cfae03c52a0",
-            passenger: "0x469f4a3a2628b320b2f60eb627d2cca8b75a4587"
+            km: 366,
+            pricePerKm: 2500000000000000,
+            driver: DriverAddress,
+            passenger: PassengerAddress,
+            rules: {
+                late_tolerance: 900,              // 15min.
+                late_punishment_driver: 0,        // No punishment for being late
+                late_punishment_passenger: 0,     // No punishment for being late
+                noshow_tolerance: 2700,           // 45min.
+                noshow_punishment_driver: 20,     // 20% of the price as guarantee
+                noshow_punishment_passenger: 100  // Everything if doesnt show up
+            },
+            driverPenalty: 0,
+            driverCheckedIn: false
         };
 
         console.log('Trigger transaction');
@@ -48,15 +59,16 @@ export class PassengerToConfirm extends React.Component {
 
     confirmPassenger() {
         console.log("confirm passenger", this.props.passenger.name);
-        //this.initializeContracts();
-        //sendDriverConfirmation({})
+        this.initializeContracts();
+        sendDriverConfirmation({});
         this.setState({
             passengerConfirmed: true
         })
     }
 
     render() {
-        return <div>{this.props.passenger.name} {this.state.passengerConfirmed ? <Link to="/journey"><CheckIn/></Link> : <AcceptDecline onConfirm={this.confirmPassenger}/>}</div>;
+        return <div>{this.props.passenger.name} {this.state.passengerConfirmed ? <Link to="/journey"><CheckIn/></Link> :
+            <AcceptDecline onConfirm={this.confirmPassenger}/>}</div>;
     }
 }
 

@@ -4,10 +4,17 @@ import io from "socket.io-client";
 
 import ReactModal from 'react-modal';
 import {AppFooter} from "../scaffold/AppFooter";
+import * as ethers from "ethers";
+import {DriverAddress, PassengerAddress, SmartContractAddress} from "../ethereum";
+
+
+import RideSharing from "../contracts/RideSharing.json";
+import {SocketAdress} from "../network";
+
 
 ReactModal.setAppElement(document.getElementById("root"));
 
-const socket = io('http://localhost:4200');
+const socket = io(SocketAdress);
 
 const customStyles = {
     content: {
@@ -33,6 +40,8 @@ export class ProviderJourneyStatus extends Component {
         };
         this.doCheckout = this.doCheckout.bind(this);
         this.collectPayment = this.collectPayment.bind(this);
+        this.showModal = this.showModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     showModal() {
@@ -86,6 +95,33 @@ export class ProviderJourneyStatus extends Component {
 
     collectPayment() {
         console.log('collect payment');
+
+        const provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
+        console.log(provider);
+        const signer = provider.getSigner();
+        console.log(signer);
+        const contract = new ethers.Contract(SmartContractAddress, RideSharing.abi, signer);
+        console.log(contract);
+
+
+        const checkinMessage = {
+            rideId: 110,
+            start_lat: 48,
+            start_lng: 11,
+            startTimestamp: Date.now(),
+            km: 366,
+            pricePerKm: 2500000000000000,
+            driver: DriverAddress,
+            passenger: PassengerAddress,
+            waivePenalty: false
+        };
+
+        const lastPop = {
+            rideId: 110,
+            km: 40
+        };
+
+        contract.cashout(checkinMessage, lastPop)
     }
 
     render() {
@@ -110,3 +146,4 @@ export class ProviderJourneyStatus extends Component {
 
 
 }
+
