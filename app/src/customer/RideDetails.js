@@ -90,7 +90,8 @@ ReactModal.setAppElement(document.getElementById("root"));
         aggregatorContract.onrideaccepted = (rideId, passenger) => {
             console.log("rideId: " + rideId + "    " + "passenger: " + passenger);
             signer.getAddress().then(address => {
-                if(passenger === address) {
+                console.log(address)
+                if(passenger.toLowerCase() === address.toLowerCase()) {
                     console.log('passenger received ethereum event');
                       this.showModal();
                 }

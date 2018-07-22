@@ -135,14 +135,14 @@ export class ProviderJourneyStatus extends Component {
         };
 
         contract.oncashoutcomplete = (address, balance) => {
-            console.log('cashout complete');
-          if (address === DriverAddress) {
+            console.log('cashout complete', 'address', address, 'balance', balance);
+          if (address.toLowerCase() === DriverAddress.toLowerCase()) {
               console.log('new balance', balance);
               this.showPaymentCompleteModal()
           }
         };
 
-        contract.cashout(checkinMessage, lastPop)
+        contract.rideCashout(checkinMessage, lastPop)
     }
 
     render() {
