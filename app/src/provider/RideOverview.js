@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import io from 'socket.io-client';
 import CheckMarkIcon from "../icons/CheckmarkIcon";
-import {sendDriverConfirmation} from "../network";
-
 // Import contract
 import RideSharing from "../contracts/RideSharing.json";
 import * as ethers from "ethers";
+import {CheckIn} from "../CheckIn";
+import {Link} from "react-router-dom";
 
 const socket = io('http://localhost:4200');
 
@@ -18,6 +18,9 @@ export class PassengerToConfirm extends React.Component {
     constructor(props) {
         super(props);
         this.confirmPassenger = this.confirmPassenger.bind(this)
+        this.state = {
+            passengerConfirmed: false
+        }
     }
 
     initializeContracts() {
@@ -45,14 +48,20 @@ export class PassengerToConfirm extends React.Component {
 
     confirmPassenger() {
         console.log("confirm passenger", this.props.passenger.name);
-        this.initializeContracts();
-        sendDriverConfirmation({})
+        //this.initializeContracts();
+        //sendDriverConfirmation({})
+        this.setState({
+            passengerConfirmed: true
+        })
     }
 
     render() {
-        return <div>{this.props.passenger.name} <CheckMarkIcon onClick={this.confirmPassenger}/> <RedX/></div>;
+        return <div>{this.props.passenger.name} {this.state.passengerConfirmed ? <Link to="/journey"><CheckIn/></Link> : <AcceptDecline onConfirm={this.confirmPassenger}/>}</div>;
     }
 }
+
+const AcceptDecline = props => <div><CheckMarkIcon onClick={props.onConfirm}/> <RedX/></div>
+
 
 export class PassengersWithConfirmation extends React.Component {
 
