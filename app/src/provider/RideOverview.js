@@ -54,14 +54,6 @@ export class PassengerToConfirm extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        web3: state.web3
-    };
-};
-
-
-
 export class PassengersWithConfirmation extends React.Component {
 
     render() {
@@ -97,7 +89,6 @@ export class RideOverview extends Component {
         socket.on('disconnect', function () {
             console.log("disconnected")
         });
-
 
     }
 

@@ -11,6 +11,7 @@ import {StartPage} from "./StartPage";
 import createBrowserHistory from "history/createBrowserHistory";
 import {RideDetails} from "./customer/RideDetails";
 import {RideOverview} from "./provider/RideOverview";
+import {CustomerJourneyStatus} from "./customer/CustomerJourneyStatus";
 
 const history = createBrowserHistory();
 
@@ -30,6 +31,7 @@ class App extends Component {
                         <Route path="/wallet" component={WalletRideOverview}/>
                         <Route path="/ride/:id" component={RideDetails}/>
                         <Route path="/overview" component={RideOverview}/>
+                        <Route path="/checkin" component={CustomerJourneyStatus}/>
                     </Switch>
                 </Router>
             </div>

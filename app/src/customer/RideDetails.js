@@ -9,6 +9,7 @@ import {sendPassengerRequest} from "../network";
 // Import contract
 import RideSharing from "../contracts/RideSharing.json";
 import * as ethers from "ethers";
+import {Link} from "react-router-dom";
 
 const socket = io('http://localhost:4200');
 
@@ -99,8 +100,6 @@ ReactModal.setAppElement(document.getElementById("root"));
         }
     }
 
-
-
     render() {
         return <div>
             <ReactModal
@@ -108,7 +107,7 @@ ReactModal.setAppElement(document.getElementById("root"));
                 style={customStyles}
                 onRequestClose={this.closeModal}>
                 <p>Jessi accepted your request.</p>
-                <div className="border-accent font-accent pa2 w3 center tc" onClick={this.closeModal}>OK</div>
+                <Link to="/checkin"><div className="border-accent font-accent pa2 w3 center tc">OK</div></Link>
             </ReactModal>
             <h3>{this.state.ride.start} - {this.state.ride.destination}</h3>
             <div className="bg-accent w-100 white h2 pa2 ma2">Show Map</div>
